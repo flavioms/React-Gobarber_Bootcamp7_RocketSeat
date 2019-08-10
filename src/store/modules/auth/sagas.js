@@ -13,7 +13,7 @@ export function* signIn({ payload }) {
     });
 
     const { token, user } = response.data;
-
+    console.tron.log(token);
     if (!user.provider) {
       toast.error('Usuário não é um provider!');
       throw new Error();
