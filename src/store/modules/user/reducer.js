@@ -1,6 +1,6 @@
 import produce from 'immer';
 
-const INITIAL_STATE = { profile: {} };
+const INITIAL_STATE = { profile: null };
 
 export default function auth(state = INITIAL_STATE, action) {
   return produce(state, draft => {
@@ -11,6 +11,10 @@ export default function auth(state = INITIAL_STATE, action) {
       }
       case '@user/UPDATE_PROFILE_SUCCESS': {
         draft.profile = action.payload.profile;
+        break;
+      }
+      case '@auth/SIGN_OUT': {
+        draft.profile = null;
         break;
       }
       default:
